@@ -1,0 +1,11 @@
+Option Explicit
+
+Dim mphoneShort
+Dim primaryKey, alternateKey
+Dim word
+
+word = "nelson"
+Set mphoneShort = CreateObject("MetaphoneCOM.DoubleMetaphoneShort")
+mphoneShort.ComputeMetaphoneKeysScr word, primaryKey, alternateKey
+WScript.Echo "Keys: " & primaryKey & " " & alternateKey
+

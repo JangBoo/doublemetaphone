@@ -1,0 +1,77 @@
+import "D:\Programming\SDKs\Microsoft Platform SDK\Include\prsht.idl";
+import "D:\Programming\SDKs\Microsoft Platform SDK\Include\mshtml.idl";
+import "d:\programming\sdks\microsoft platform sdk\include\dimm.idl";
+import "D:\Programming\SDKs\Microsoft Platform SDK\Include\mshtmhst.idl";
+import "d:\programming\sdks\microsoft platform sdk\include\docobj.idl";
+import "D:\Programming\SDKs\Microsoft Platform SDK\Include\exdisp.idl";
+import "D:\Programming\SDKs\Microsoft Platform SDK\Include\objsafe.idl";
+
+[
+	object,
+	uuid(8DDA7DB4-1548-4E71-B9F7-EB6714A5CD07),
+	dual,
+	helpstring("IDoubleMetaphoneShort Interface"),
+	pointer_default(unique)
+] 
+#line 14 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphoneshort.h"
+interface IDoubleMetaphoneShort : IDispatch {
+#line 16 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphoneshort.h"
+	HRESULT  ComputeMetaphoneKeys([in] BSTR Word, [out] short *PrimaryKey, [out] short *AlternateKey);
+	HRESULT  CompareMetaphoneKeys([in] short PrimaryKey, [in] short AlternateKey1, [in] short PrimaryKey2, [in] short AlternateKey2, [out,retval] VARIANT_BOOL *Result);
+#line 19 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphoneshort.h"
+	HRESULT  ComputeMetaphoneKeysScr([in] BSTR Word, [out] VARIANT *PrimaryKey, [out] VARIANT *AlternateKey);
+};
+
+[
+	object,
+	uuid(CF4FA34B-FDB2-42A5-8DD0-38338FC46320),
+	dual,
+	helpstring("IDoubleMetaphoneString Interface"),
+	pointer_default(unique)
+] 
+#line 14 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphonestring.h"
+interface IDoubleMetaphoneString : IDispatch {
+#line 16 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphonestring.h"
+	HRESULT  ComputeMetaphoneKeys([in] BSTR Word, [out] BSTR *PrimaryKey , [out] BSTR *AlternateKey );
+	HRESULT  CompareMetaphoneKeys([in] BSTR PrimaryKey, [in] BSTR AlternateKey1, [in] BSTR PrimaryKey2, [in] BSTR AlternateKey2, [out,retval] VARIANT_BOOL *Result);
+#line 19 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphonestring.h"
+	HRESULT  ComputeMetaphoneKeysScr([in] BSTR Word, [out] VARIANT *PrimaryKey, [out] VARIANT *AlternateKey);
+};
+
+
+[ version(1.0), uuid(845FE5AF-CC53-4C37-9464-EE20A866B9B0), helpstring("Adam J. Nelson's Double Metaphone Implementations") ]
+library MetaphoneCOM
+{
+	importlib("stdole2.tlb");
+	importlib("olepro32.dll");
+
+	[
+		version(1.0),
+		uuid(C762BBEB-9D86-4988-BB7E-3A9963249AB6),
+		helpstring("Adam J. Nelson's Double Metaphone Short Implementation")
+	] 
+#line 35 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphoneshort.h"
+	coclass DoubleMetaphoneShort {
+		interface IDoubleMetaphoneShort;
+	};
+
+	[
+		version(1.0),
+		uuid(EDDED454-8E77-472D-9AAC-D690AFDF2BCB),
+		helpstring("Adam J. Nelson's Double Metaphone String Implementation")
+	] 
+#line 35 "z:\\projects\\personal\\metaphone\\metaphonecom\\doublemetaphonestring.h"
+	coclass DoubleMetaphoneString {
+		interface IDoubleMetaphoneString;
+	};
+
+	[
+		custom(8AFCDA7F-33B7-3120-86A8-754D2C0C0578, "library_block")
+	] 
+#line 15 "z:\\projects\\personal\\metaphone\\metaphonecom\\metaphonecom.cpp"
+	enum MetaphoneKey {
+		Invalid = -1,
+	};
+
+}
+

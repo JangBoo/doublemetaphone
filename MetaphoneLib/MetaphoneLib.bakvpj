@@ -1,0 +1,31 @@
+[ASSOCIATION]
+makefile=MetaphoneLib.vcproj
+makefiledate=
+makefiletype=microsoft visual studio visual c++
+[GLOBAL]
+workingdir=.
+version=7.0
+packname=Microsoft Visual Studio  >= 7.0 VC++
+[CONFIGURATIONS]
+[COMPILER.Debug]
+INCLUDEDIRS=%(INCLUDE)
+COMPILE=copts: savecurrent|concur|capturecmd: vstudiocompile "%f"otheropts:
+MAKE=copts: saveworkspacefiles|concur|capturecmd: devenv "%w" /build "%b" /project "%rm"
+REBUILD=copts: saveworkspacefiles|concur|capturecmd: devenv "%rm" /rebuild "%b"
+DEBUG=cmd: devenv "%w"
+EXECUTE=cmd: "%boMetaphoneLib.exe"
+usertool_resource_editor=copts: saveworkspacefiles|hide|menu: Resource Editor:Resource Editorcmd: devenv
+usertool_build_solution=copts: saveworkspacefiles|hide|concur|capturemenu: Build Soluttion:Build Solutioncmd: devenv "%w" /build "%b"
+usertool_clean_solution=copts: concur|capture|savenone|menu: Clean Solution:Clean Solutioncmd: devenv "%w" /clean %botheropts:
+usertool_clean_project=copts: concur|capture|savenone|menu: Clean Project:Clean Projectcmd: devenv "%rp%rn.vcproj" /clean %botheropts:
+[COMPILER.Release]
+INCLUDEDIRS=%(INCLUDE)
+COMPILE=copts: savecurrent|concur|capturecmd: vstudiocompile "%f"otheropts:
+MAKE=copts: saveworkspacefiles|concur|capturecmd: devenv "%w" /build "%b" /project "%rm"
+REBUILD=copts: saveworkspacefiles|concur|capturecmd: devenv "%rm" /rebuild "%b"
+DEBUG=cmd: devenv "%w"
+EXECUTE=cmd: "%boMetaphoneLib.exe"
+usertool_resource_editor=copts: saveworkspacefiles|hide|menu: Resource Editor:Resource Editorcmd: devenv
+usertool_build_solution=copts: saveworkspacefiles|hide|concur|capturemenu: Build Soluttion:Build Solutioncmd: devenv "%w" /build "%b"
+usertool_clean_solution=copts: concur|capture|savenone|menu: Clean Solution:Clean Solutioncmd: devenv "%w" /clean %botheropts:
+usertool_clean_project=copts: concur|capture|savenone|menu: Clean Project:Clean Projectcmd: devenv "%rp%rn.vcproj" /clean %botheropts:
